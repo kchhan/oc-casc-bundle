@@ -79,6 +79,22 @@ unclassified:
   cascItemsConfiguration:
     variableInterpolationEnabledForAdmin: true
     variableInterpolationEnabledForNonAdmin: true
+  bundleStorageService:
+    activated: true
+    bundles:
+    - name: "17727e58-f170-4f63-9814-885e71a490d7"
+      retriever: "localFolderRetriever"
+    - name: "controller-casc-bundles"
+      retriever:
+        SCM:
+          scmSource:
+            gitSource:
+              remote: "https://github.com/kchhan/controller-casc-bundles.git"
+              traits:
+              - "gitBranchDiscovery"
 tool:
   cloudbeesPluginUsageAnalyzer:
     enabled: true
+cloudBeesCasCServer:
+  disableRemoteValidation: false
+  visibility: true

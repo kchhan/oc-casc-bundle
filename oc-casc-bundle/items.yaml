@@ -33,6 +33,8 @@ items:
   description: ''
   displayName: controller-0
   properties:
+  - configurationAsCode:
+      bundle: main/controller-0
   - sharedHeaderLabelOptIn:
       optIn: true
   - healthReporting:

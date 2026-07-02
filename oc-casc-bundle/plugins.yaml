@@ -48,6 +48,7 @@ plugins:
 - id: durable-task
 - id: eddsa-api
 - id: font-awesome-api
+- id: git
 - id: gson-api
 - id: handy-uri-templates-2-api
 - id: infradna-backup
