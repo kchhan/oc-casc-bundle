@@ -1,0 +1,84 @@
+jenkins:
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "hudson.util.DoubleLaunchChecker"
+  labelAtoms:
+  - name: "built-in"
+  numExecutors: 2
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: false
+      users:
+      - id: "admin"
+        name: "admin"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "core-oc-offline"
+      url: "file:/tmp/jenkins/war/WEB-INF/plugins/update-center.json"
+    - id: "cap-core-oc"
+      url: "https://jenkins-updates.cloudbees.com/update-center/envelope-core-oc/update-center.json"
+beekeeper:
+  enabled: true
+  securityWarnings:
+    enabledForCore: true
+    enabledForPlugins: true
+  upgrades:
+    autoDowngradePlugins: false
+    autoUpgradePlugins: true
+cloudBeesCasCServer:
+  disableRemoteValidation: false
+  visibility: false
+masterprovisioning:
+  kubernetes:
+    clusterEndpoints:
+    - id: "default"
+      jenkinsUrl: "http://cjoc.cloudbees.svc.cluster.local/cjoc/"
+      name: "kubernetes"
+      serviceExposure:
+        ingress:
+          ingressClass: "alb"
+      storageClassName: "ebs-sc"
+      webSocket: true
+    cpus: "1.0"
+    disk: 50
+    fsGroup: "1000"
+    globalJavaOptions: "-Dorg.csanchez.jenkins.plugins.kubernetes.pipeline.PodTemplateStepExecution.defaultImage=cloudbees/cloudbees-core-agent:2.541.3.36069\
+      \ -Dcom.cloudbees.jenkins.plugins.kube.ServiceAccountFilter.defaultServiceAccount=jenkins-agents\
+      \ -Dcom.cloudbees.networking.useSubdomain=false -Dcom.cloudbees.networking.protocol=\"\
+      https\" -Dcom.cloudbees.networking.hostname=\"ci.kchhan.aws.ps.beescloud.com\"\
+      \ -Dcom.cloudbees.networking.port=443 -Dcom.cloudbees.networking.operationsCenterName=\"\
+      cjoc\" -Djenkins.install.runSetupWizard=false -Duser.timezone=America/New_York\
+      \ -XX:InitialRAMPercentage=50.0 -XX:MaxRAMPercentage=50.0 -XX:+AlwaysPreTouch\
+      \ -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=$JENKINS_HOME/logs -XX:+UnlockDiagnosticVMOptions\
+      \ -XX:+LogVMOutput -XX:LogFile=$JENKINS_HOME/logs/jvm.log -XX:ErrorFile=$JENKINS_HOME/logs/hs_err_%p.log\
+      \ -XX:+UseG1GC -XX:+UseStringDeduplication -XX:+ParallelRefProcEnabled -XX:+DisableExplicitGC\
+      \ -XX:+UnlockExperimentalVMOptions"
+    javaOptions: "-XshowSettings:vm -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled\
+      \ -XX:+UseStringDeduplication -XX:+AlwaysActAsServerClassMachine -Dhudson.slaves.NodeProvisioner.initialDelay=0\
+      \ -XX:-OmitStackTraceInFastThrow"
+    livenessInitialDelaySeconds: 0
+    livenessPeriodSeconds: 10
+    livenessTimeoutSeconds: 10
+    memory: 3072
+    readinessFailureThreshold: 3
+    readinessInitialDelaySeconds: 0
+    readinessTimeoutSeconds: 5
+    startupFailureThreshold: 100
+    startupInitialDelaySeconds: 30
+    startupPeriodSeconds: 10
+    startupTimeoutSeconds: 5
+    storageClassName: "ebs-sc"
+    terminationGracePeriodSeconds: 30
+unclassified:
+  cascItemsConfiguration:
+    variableInterpolationEnabledForAdmin: true
+    variableInterpolationEnabledForNonAdmin: true
+tool:
+  cloudbeesPluginUsageAnalyzer:
+    enabled: true
