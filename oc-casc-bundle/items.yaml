@@ -9,7 +9,7 @@ items:
       allowExternalAgents: false
       terminationGracePeriodSeconds: 30
       image: CloudBees CI - Managed Controller - 2.541.3.36069
-      memory: 3072
+      memory: 5368
       startupPeriodSeconds: 10
       useNewHealthCheck: false
       fsGroup: '1000'
