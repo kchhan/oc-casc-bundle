@@ -29,7 +29,8 @@ items:
       startupInitialDelaySeconds: 30
       javaOptions: -XshowSettings:vm -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled
         -XX:+UseStringDeduplication -XX:+AlwaysActAsServerClassMachine -Dhudson.slaves.NodeProvisioner.initialDelay=0
-        -XX:-OmitStackTraceInFastThrow
+        -XX:-OmitStackTraceInFastThrow -Xlog:gc*=info,gc+heap=debug,gc+ref*=debug,gc+ergo*=trace,gc+age*=trace:file=/var/jenkins_home/logs/gc.log:utctime,pid,level,tags:filecount=2,filesize=100M
+
   description: ''
   displayName: controller-0
   properties:
