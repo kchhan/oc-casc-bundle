@@ -11,7 +11,6 @@ items:
       image: CloudBees CI - Managed Controller - 2.541.3.36069
       memory: 5368
       startupPeriodSeconds: 10
-      useNewHealthCheck: false
       fsGroup: '1000'
       cpus: 1.0
       readinessTimeoutSeconds: 5
