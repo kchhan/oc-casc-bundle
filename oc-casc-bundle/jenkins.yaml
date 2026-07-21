@@ -1,8 +1,5 @@
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
-  crumbIssuer:
-    standard:
-      excludeClientIPFromCrumb: false
   disableRememberMe: false
   disabledAdministrativeMonitors:
   - "hudson.util.DoubleLaunchChecker"
