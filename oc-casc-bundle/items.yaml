@@ -8,7 +8,7 @@ items:
     kubernetes:
       allowExternalAgents: false
       terminationGracePeriodSeconds: 30
-      image: CloudBees CI - Managed Controller - 2.541.3.36069
+      image: CloudBees CI - Managed Controller - 2.568.1.37445
       memory: 5368
       startupPeriodSeconds: 10
       fsGroup: '1000'
